@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a web application developed using ASP.NET MVC to provide a platform for users to search for, book, and manage home rentals. The application allows users to browse available homes, view details, and book their stays. Administrators can manage listings and view booking details.
+This project is a windows application developed using .NET WPF to provide a platform for users to search for, book, and manage home rentals. The application allows users to browse available homes, view details, and book their stays. Administrators can manage listings and view booking details.
 
 ## Features
 
@@ -14,6 +14,6 @@ This project is a web application developed using ASP.NET MVC to provide a platf
 
 ## Technology Stack
 
-- **Framework**: ASP.NET MVC
+- **Framework**: .NET WPF
 - **Backend**: C#
 - **Frontend**: HTML, CSS, XAML, XML
