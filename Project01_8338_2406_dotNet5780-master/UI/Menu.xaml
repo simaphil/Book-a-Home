@@ -1,0 +1,119 @@
+﻿<Window x:Class="UI.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:UI"
+        mc:Ignorable="d"
+        Icon="Image/palm-tree.png"
+        WindowStartupLocation="{StaticResource WSL}"
+        Style="{StaticResource ResourceKey=pageDefault}" >
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border CornerRadius="25" Background="White">
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}" Background="Transparent">
+            <materialDesign:DrawerHost.LeftDrawerContent >
+                <Border  CornerRadius="25,0,0,25">
+                    <DockPanel MinWidth="212" Background="Transparent"   >
+                        <ToggleButton x:Name="toggleButton" Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                              DockPanel.Dock="Top"
+                              HorizontalAlignment="Right" Margin="16" 
+                              IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                        <Menu >
+
+                            <Menu.ItemsPanel >
+                                <ItemsPanelTemplate >
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </Menu.ItemsPanel>
+                            <MenuItem Header="Admin" >
+                                <MenuItem Header="View All Orders" Name="AdminOrders" Click="SelectionChanged"  />
+                                <MenuItem Header="View All Units" Name="AdminUnits" Click="SelectionChanged" />
+                                <MenuItem Header="View All Hosts" Name="AdminHost" Click="SelectionChanged"/>
+                                <MenuItem Header="View All Guests" Name="AdminGuest" Click="SelectionChanged"/>
+                                <MenuItem Header="test" Name="testUserControl" Click="SelectionChanged"  />
+
+                            </MenuItem >
+                            <MenuItem Header="Host" >
+                                <MenuItem Header="View All Units" Name="AddUnit"  Click="SelectionChanged" />
+                                <MenuItem Header="Orders" Name="HostOrders" Click="SelectionChanged" />
+                            </MenuItem>
+                            <MenuItem Header="Guest">
+                                <MenuItem Header="New Search" Name="GuestReq" Click="SelectionChanged" />
+                                <MenuItem Header="Orders" Name="GuestOrder" Click="SelectionChanged"/>
+                            </MenuItem>
+                        </Menu>
+                    </DockPanel>
+                </Border>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="GridMain" Grid.Row="1" >
+                    <Label Content="Your next VACATION" FontSize="50" Margin="13,229,-214,191.2" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-38.934"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <materialDesign:PackIcon Kind="PalmTree" Height="426" Width="272" RenderTransformOrigin="0.5,0.5"  >
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-33.802"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+
+                </Grid>
+
+
+                <materialDesign:ColorZone CornerRadius="25,25,0,0" Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" DockPanel.Dock="Top">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" x:Name="MenuToggleButton" Grid.Column="0"/>
+                        <StackPanel x:Name="ManageButtonStackPanel" Orientation="Horizontal" HorizontalAlignment="Right"  Grid.Column="1" Width="120">
+                            <Button Click="Button_Click_MinimizeWindow" Width="30" Height="30" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="White" BorderBrush="Blue" Foreground="Blue"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                                <Button.Content>
+                                    <materialDesign:PackIcon Kind="WindowMinimize" Height="20" Width="20"  />
+                                </Button.Content>
+                            </Button>
+                            <Button Click="Button_Click_MaximizeWindow" Width="30" Height="30" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="White" BorderBrush="Blue" Foreground="Blue" Margin="10 0" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                                <Button.Content>
+                                    <materialDesign:PackIcon Kind="WindowMaximize" Height="20" Width="20"  />
+                                </Button.Content>
+                            </Button>
+                            <Button Click="Button_Click_CloseWindow" Width="30" Height="30" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="White" BorderBrush="Blue" Foreground="Blue" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                                <Button.Content>
+                                    <materialDesign:PackIcon Kind="WindowClose" Height="20" Width="20"  />
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:ColorZone>
+            </Grid>
+        </materialDesign:DrawerHost>
+
+    </Border>
+
+</Window>
